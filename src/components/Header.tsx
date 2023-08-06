@@ -29,7 +29,10 @@ export default function Header({
         <TouchableOpacity
           key={index}
           onPress={() => handleTime(index)}
-          style={styles.button}
+          style={[
+            styles.button,
+            currentTime !== TIME_TYPES[index] && { borderColor: "transparent" },
+          ]}
         >
           <Text>{option}</Text>
         </TouchableOpacity>
