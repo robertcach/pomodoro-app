@@ -9,6 +9,7 @@ import {
   TIME_TYPES,
 } from "./src/constants";
 import Header from "./src/components/Header";
+import Timer from "./src/components/Timer";
 
 export default function App() {
   const [isWorking, setIsWorking] = useState(false);
@@ -21,14 +22,22 @@ export default function App() {
     <SafeAreaView
       style={[styles.container, { backgroundColor: COLORS[timeOptionIndex] }]}
     >
-      <View style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
+      <View
+        style={{
+          flex: 1,
+          paddingHorizontal: 15,
+          paddingTop: Platform.OS === "android" ? 30 : 0,
+        }}
+      >
         <Text style={styles.text}>Pomodoro</Text>
-        <Text style={styles.text}>{time}</Text>
+
         <Header
           currentTime={currentTime}
           setCurrentTime={setCurrentTime}
           setTime={setTime}
         />
+
+        <Timer time={time} />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
