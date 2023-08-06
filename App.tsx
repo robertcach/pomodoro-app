@@ -10,8 +10,10 @@ import {
 } from "./src/constants";
 import Header from "./src/components/Header";
 import Timer from "./src/components/Timer";
+import Button from "./src/components/Button";
 
 export default function App() {
+  const [active, setActive] = useState(false);
   const [isWorking, setIsWorking] = useState(false);
   const [time, setTime] = useState(25 * SECONDS_IN_MINUTE);
   const [currentTime, setCurrentTime] = useState<TIME_TYPE>("POMO");
@@ -30,14 +32,13 @@ export default function App() {
         }}
       >
         <Text style={styles.text}>Pomodoro</Text>
-
         <Header
           currentTime={currentTime}
           setCurrentTime={setCurrentTime}
           setTime={setTime}
         />
-
         <Timer time={time} />
+        <Button active={active} />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
