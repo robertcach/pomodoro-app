@@ -10,6 +10,7 @@ import {
   Platform,
 } from "react-native";
 import { SECONDS_IN_MINUTE, TIME_TYPE } from "./src/constants";
+import Header from "./src/components/Header";
 
 export default function App() {
   const [isWorking, setIsWorking] = useState(false);
@@ -20,8 +21,11 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <View style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
         <Text style={styles.text}>Pomodoro</Text>
-        <Text style={styles.text}>{currentTime}</Text>
-        <Button title="My button" />
+        <Header
+          currentTime={currentTime}
+          setCurrentTime={setCurrentTime}
+          time={time}
+        />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
