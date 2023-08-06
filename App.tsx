@@ -9,7 +9,12 @@ import {
   SafeAreaView,
   Platform,
 } from "react-native";
-import { SECONDS_IN_MINUTE, TIME_TYPE } from "./src/constants";
+import {
+  COLORS,
+  SECONDS_IN_MINUTE,
+  TIME_TYPE,
+  TIME_TYPES,
+} from "./src/constants";
 import Header from "./src/components/Header";
 
 export default function App() {
@@ -17,8 +22,12 @@ export default function App() {
   const [time, setTime] = useState(25 * SECONDS_IN_MINUTE);
   const [currentTime, setCurrentTime] = useState<TIME_TYPE>("POMO");
 
+  const timeOptionIndex = TIME_TYPES.findIndex((type) => type === currentTime);
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: COLORS[timeOptionIndex] }]}
+    >
       <View style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
         <Text style={styles.text}>Pomodoro</Text>
         <Text>{time}</Text>
