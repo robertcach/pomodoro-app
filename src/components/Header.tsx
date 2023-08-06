@@ -34,7 +34,7 @@ export default function Header({
             currentTime !== TIME_TYPES[index] && { borderColor: "transparent" },
           ]}
         >
-          <Text>{option}</Text>
+          <Text style={{ fontWeight: "bold" }}>{option}</Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -46,5 +46,9 @@ const styles = StyleSheet.create({
     width: "33%",
     borderWidth: 3,
     padding: 5,
+    borderRadius: 10,
+    borderColor: "white",
+    marginVertical: 20,
+    alignItems: "center",
   },
 });

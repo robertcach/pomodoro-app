@@ -1,14 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  SafeAreaView,
-  Platform,
-} from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Platform } from "react-native";
 import {
   COLORS,
   SECONDS_IN_MINUTE,
@@ -30,7 +23,7 @@ export default function App() {
     >
       <View style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
         <Text style={styles.text}>Pomodoro</Text>
-        <Text>{time}</Text>
+        <Text style={styles.text}>{time}</Text>
         <Header
           currentTime={currentTime}
           setCurrentTime={setCurrentTime}
