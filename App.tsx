@@ -21,10 +21,11 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <View style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
         <Text style={styles.text}>Pomodoro</Text>
+        <Text>{time}</Text>
         <Header
           currentTime={currentTime}
           setCurrentTime={setCurrentTime}
-          time={time}
+          setTime={setTime}
         />
         <StatusBar style="auto" />
       </View>
