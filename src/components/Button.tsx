@@ -2,12 +2,16 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface ButtonProps {
   active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Button({ active }: ButtonProps) {
+export default function Button({ active, setActive }: ButtonProps) {
   return (
     <View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        onPress={() => setActive(!active)}
+        style={styles.button}
+      >
         <Text style={styles.text}>{active ? "STOP" : "START"}</Text>
       </TouchableOpacity>
     </View>

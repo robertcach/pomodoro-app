@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { StyleSheet, Text, View, SafeAreaView, Platform } from "react-native";
 import {
@@ -20,6 +20,26 @@ export default function App() {
 
   const timeOptionIndex = TIME_TYPES.findIndex((type) => type === currentTime);
 
+  useEffect(() => {
+    let interval: NodeJS.Timeout | undefined;
+
+    if (active) {
+      interval = setInterval(() => {
+        setTime(time - 1);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+
+    if (time === 0) {
+      setActive(false);
+      setIsWorking((prev) => !prev);
+      setTime(isWorking ? 300 : 1500);
+    }
+
+    return () => clearInterval(interval);
+  }, [active, time]);
+
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: COLORS[timeOptionIndex] }]}
@@ -38,7 +58,7 @@ export default function App() {
           setTime={setTime}
         />
         <Timer time={time} />
-        <Button active={active} />
+        <Button active={active} setActive={setActive} />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
